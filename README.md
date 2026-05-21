@@ -1,21 +1,29 @@
-# React + TypeScript + Vite + shadcn/ui
+# Price Field Validation
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+Small React demo for an advert creation form focused on one production-style field: price.
 
-## Adding components
+The field validates a required numeric value from `10` to `100 000 000`, formats thousands with spaces, shows the Thai baht sign as a suffix, and keeps the submitted value normalized as a number.
 
-To add components to your app, run the following command:
+## Tech
+
+- React + TypeScript + Vite
+- Zod for client-side validation
+- react-i18next for Russian, English, and Thai messages
+- react-number-format for price formatting
+- shadcn-style `Field`, `Input`, `Button`, and `ButtonGroup` components
+
+## UX
+
+- Validation runs after blur or submit, so the user is not interrupted on the first keystroke.
+- Typed spaces are ignored by the formatter.
+- The visible value is formatted, for example `1 000 000 ฿`.
+- The internal value remains raw digits and is parsed by Zod before submit.
+- Language can be switched with the `RU / EN / TH` button group.
+
+## Scripts
 
 ```bash
-npx shadcn@latest add button
-```
-
-This will place the ui components in the `src/components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
+npm run dev
+npm run typecheck
+npm run build
 ```
